@@ -30,5 +30,6 @@ public class Main extends PApplet{
 	@Override
 	public void mousePressed() {
 			controller.addRandomFig();
+			controller.pauseFig();
 	}
 }

@@ -28,4 +28,8 @@ public class Controller {
 	public void addRandomFig() {
 		logic.addRandomFig();
 	}
+	
+	public void pauseFig() {
+		logic.pauseFig();
+	}
 }
