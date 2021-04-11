@@ -38,7 +38,7 @@ public abstract class Figure extends PApplet {
 	protected void move() {
 		if (isMov) {
 			posY += (2*direction);
-			if (posY + tam/2 <= 19 || posY + (tam/2) >= 580) {
+			if (posY + tam/2 <= 29 || posY + (tam/2) >= 580) {
 				direction = direction *(-1); //change direction (rebound)
 			}
 		}

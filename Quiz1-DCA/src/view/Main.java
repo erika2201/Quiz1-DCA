@@ -23,7 +23,7 @@ public class Main extends PApplet{
 	
 	@Override
 	public void draw() {
-		background(255);
+		background(10);
 		controller.drawRandomFig();
 		controller.hit();
 	}

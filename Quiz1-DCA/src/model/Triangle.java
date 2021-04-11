@@ -15,7 +15,7 @@ public class Triangle extends Figure {
 					getPosX(), 						getPosY() - getTam() / 2, //PosX and PosY 2
 					getPosX() + getTam() / 2, 		getPosY()+getTam()/2);	  //PosX and PosY 3
 		
-		app.fill(0);
+		app.fill(255);
 		app.textAlign(CENTER);
 		app.text(getValue(),getPosX(),getPosY()+ getTam()/3);
 	}
