@@ -9,18 +9,20 @@ public abstract class Figure extends PApplet {
 	protected int posY;
 	protected int tam;
 	protected int direction;
+	protected int value;
 	
 	protected int r,g,b;
 	
 	private boolean isMov;
 	
-	public Figure(int tam, int posX, int posY, int direction, int r, int g, int b, PApplet app) {
+	public Figure(int tam, int posX, int posY, int direction, int r, int g, int b, int value, PApplet app) {
 		
 		this.tam=tam;
 		this.posX=posX;
 		this.posY=posY;
 		this.direction=direction;
 		this.app=app;
+		this.value=value; 
 		
 		this.r = r;
 		this.g = g;
@@ -60,4 +62,9 @@ public abstract class Figure extends PApplet {
 	public int getTam() {
 		return tam;
 	}
+	
+	public int getValue() {
+		return value;
+	}
+
 }

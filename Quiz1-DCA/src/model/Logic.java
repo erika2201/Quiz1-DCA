@@ -19,9 +19,9 @@ public class Logic extends PApplet {
 		this.app = app;
 
 		app.rectMode(CENTER);
-		circle = new Circle(50, 50, 50, 1, 255, 0, 255, app);
-		square = new Square(50, 50, 50, 1, 255, 0, 255, app);
-		triangle = new Triangle(50, 50, 50, 1,  (int) random (0,255), (int) random (0,255),(int) random (0,255), app);
+		circle = new Circle(50, 50, 50, 1, 255, 0, 255, 10, app);
+		square = new Square(50, 50, 50, 1, 255, 0, 255, 10, app);
+		triangle = new Triangle(50, 50, 50, 1,  (int) random (0,255), (int) random (0,255),(int) random (0,255),10, app);
 		
 		cargarTXT = app.loadStrings("../data/TXT.txt");
 		words = new ArrayList<String>();
@@ -34,9 +34,9 @@ public class Logic extends PApplet {
 			}
 		}
 
-		for (String element : words) {
+		/*for (String element : words) {
 			System.out.println(element);
-		}
+		}*/
 	}
 
 	public void drawCircle() {
@@ -60,6 +60,7 @@ public class Logic extends PApplet {
 		int posX = (int) random(10,580);
 		int posY = (int) random(30,100);
 		int direction = 1;
+		int value = (int) random(0, 11);
 
 		int r= (int) random (0,255);
 		int g= (int) random (0,255);
@@ -70,11 +71,11 @@ public class Logic extends PApplet {
 		if (app.mouseButton == RIGHT) {
 			switch (randomFig) {
 			case 0: 
-			figure.add(new Circle(tam, posX, posY, direction, r, g, b, app));
+			figure.add(new Circle(tam, posX, posY, direction, r, g, b, value, app));
 				break;
 				
 			case 1:
-			figure.add(new Square(tam, posX, posY, direction, r, g, b, app));
+			figure.add(new Square(tam, posX, posY, direction, r, g, b,value, app));
 				break;
 			}
 		}
@@ -102,11 +103,12 @@ public class Logic extends PApplet {
 										figure.get(j).getPosX(), figure.get(j).getPosY()) 
 											<= figure.get(i).getTam() / 2 + figure.get(j).getTam() / 2) {
 							
-											addTriangulo(figure.get(i).getPosX(), //posx to draw triangle
-														 figure.get(i).getPosY());//posY to draw triangle
+											addTriangle(figure.get(i).getPosX(), //posx to draw triangle
+														 figure.get(i).getPosY(),//posY to draw triangle
+														 figure.get(i).getValue() + figure.get(j).getValue());
 											
-											figure.remove(j);//REMUEVE First figure
-											figure.remove(i);// REMUEVE second figure
+											figure.remove(j);//Remove First figure
+											figure.remove(i);// REmove second figure
 											
 											removed = true;
 						}
@@ -118,15 +120,15 @@ public class Logic extends PApplet {
 		}
 	}
 
-	private void addTriangulo(int posX, int posY) {
+	private void addTriangle(int posX, int posY, int value) {
 		int tam = (int) random(10,80);
 		int direction = 1;
-
+		
 		int r= (int) random (0,255);
 		int g= (int) random (0,255);
 		int b= (int) random (0,255);
 		
-		figure.add(new Triangle(tam, posX, posY, direction, r, g, b, app));
+		figure.add(new Triangle(tam, posX, posY, direction, r, g, b, value, app));
 	}
 	
 }

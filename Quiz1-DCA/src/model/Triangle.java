@@ -4,8 +4,8 @@ import processing.core.PApplet;
 
 public class Triangle extends Figure {
 
-	public Triangle(int tam, int posX, int posY, int direction, int r, int g, int b, PApplet app) {
-		super(tam, posX, posY, direction, r, g, b, app);
+	public Triangle(int tam, int posX, int posY, int direction, int r, int g, int b, int value, PApplet app) {
+		super(tam, posX, posY, direction, r, g, b, value, app);
 	}
 
 	@Override
@@ -14,6 +14,10 @@ public class Triangle extends Figure {
 		app.triangle(getPosX() - getTam() / 2, 		getPosY() + getTam() / 2, //PosX and PosY 1
 					getPosX(), 						getPosY() - getTam() / 2, //PosX and PosY 2
 					getPosX() + getTam() / 2, 		getPosY()+getTam()/2);	  //PosX and PosY 3
+		
+		app.fill(0);
+		app.textAlign(CENTER);
+		app.text(getValue(),getPosX(),getPosY()+ getTam()/3);
 	}
 
 }
