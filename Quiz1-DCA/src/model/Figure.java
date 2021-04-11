@@ -12,11 +12,11 @@ public abstract class Figure extends PApplet {
 	
 	protected int r,g,b;
 	
-	public Figure(int tam, int posx, int posy, int direction, int r, int g, int b, PApplet app) {
+	public Figure(int tam, int posX, int posY, int direction, int r, int g, int b, PApplet app) {
 		
 		this.tam=tam;
-		this.posX=posx;
-		this.posY=posy;
+		this.posX=posX;
+		this.posY=posY;
 		this.direction=direction;
 		this.app=app;
 		
@@ -30,9 +30,9 @@ public abstract class Figure extends PApplet {
 	//abstract because each figure is drawn with different methods
 	
 	protected void move() {
-		posY += direction* 3;
+		posY += direction* 4;
 		
-		if (posX + tam/2 <= 0 || posX + tam/2 >= 580) {
+		if (posY + tam/2 <= 19 || posY + (tam/2) >= 580) {
 			direction = direction *(-1); //change direction (rebound)
 	
 		}

@@ -1,13 +1,16 @@
 package controller;
 
 import model.Logic;
+import processing.core.PApplet;
 
 public class Controller {
 
 	Logic logic;
+	PApplet app;
 	
-	public Controller() {
-		logic = new Logic();
+	public Controller(PApplet app) {
+		this.app = app;
+		logic = new Logic(app);
 	}
 	
 	public void drawCircle() {
@@ -18,7 +21,11 @@ public class Controller {
 		logic.drawSquare();
 	}
 	
-	public void drawTriangle() {
-		logic.drawTriangle();
+	public void drawRandomFig() {
+		logic.drawRandomFig();
+	}
+
+	public void addRandomFig() {
+		logic.addRandomFig();
 	}
 }

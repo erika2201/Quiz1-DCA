@@ -5,35 +5,79 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 
 public class Logic extends PApplet {
-	
+
 	PApplet app;
 	Figure circle;
 	Figure square;
 	Figure triangle;
-	
-	String [] cartarTXT;
-	ArrayList <String> words;
+
+	String[] cargarTXT;
+	ArrayList<String> words;
 	ArrayList<Figure> figure;
-	
-	public Logic() {
-		cartarTXT = app.loadStrings("../data/TXT.txt");
-		words = new ArrayList<String>();
+
+	public Logic(PApplet app) {
 		figure = new ArrayList<Figure>();
-		
+		this.app = app;
+
+		app.rectMode(CENTER);
 		circle = new Circle(50, 50, 50, 1, 255, 0, 255, app);
 		square = new Square(50, 50, 50, 1, 255, 0, 255, app);
+
+		cargarTXT = app.loadStrings("../data/TXT.txt");
+		words = new ArrayList<String>();
+
+		for (int i = 0; i < cargarTXT.length; i++) {
+			String[] tempArray = cargarTXT[i].split("\\r\\n|\\n|\\r"); // Line to line
+
+			for (int j = 0; j < tempArray.length; j++) {
+				words.add(tempArray[j]);
+			}
+		}
+
+		for (String element : words) {
+			System.out.println(element);
+		}
 	}
-	
+
 	public void drawCircle() {
 		circle.drawFigure();
 	}
-	
+
 	public void drawSquare() {
 		square.drawFigure();
 	}
-	
-	public void drawTriangle() {
-		square.drawFigure();
+
+	public void drawRandomFig() {
+		for (int i = 0; i < figure.size(); i++) {
+			figure.get(i).drawFigure();
+			figure.get(i).move();
+		}
 	}
 
+	public void addRandomFig() {
+		
+		int tam = (int) random(10,80);
+		int posX = (int) random(0,580);
+		int posY = (int) random(30,100);
+		int direction = 1;
+
+		int r= (int) random (0,255);
+		int g= (int) random (0,255);
+		int b= (int) random (0,255);
+		
+		int randomFig = (int) random (0,2); //Random status to create a figure between circle and square
+	
+		if (app.mouseButton == RIGHT) {
+			switch (randomFig) {
+			case 0: 
+			figure.add(new Circle(tam, posX, posY, direction, r, g, b, app));
+				break;
+				
+			case 1:
+			figure.add(new Square(tam, posX, posY, direction, r, g, b, app));
+				break;
+			}
+		}
+	}
+	
 }
