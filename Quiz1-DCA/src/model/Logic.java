@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-
 import processing.core.PApplet;
 
 public class Logic extends PApplet {
@@ -22,7 +21,8 @@ public class Logic extends PApplet {
 		app.rectMode(CENTER);
 		circle = new Circle(50, 50, 50, 1, 255, 0, 255, app);
 		square = new Square(50, 50, 50, 1, 255, 0, 255, app);
-
+		triangle = new Triangle(50, 50, 50, 1,  (int) random (0,255), (int) random (0,255),(int) random (0,255), app);
+		
 		cargarTXT = app.loadStrings("../data/TXT.txt");
 		words = new ArrayList<String>();
 
@@ -57,7 +57,7 @@ public class Logic extends PApplet {
 	public void addRandomFig() {
 		
 		int tam = (int) random(10,80);
-		int posX = (int) random(0,580);
+		int posX = (int) random(10,580);
 		int posY = (int) random(30,100);
 		int direction = 1;
 
@@ -90,4 +90,43 @@ public class Logic extends PApplet {
 			}
 		}
 	}
+	
+	public void hit() {
+		boolean removed = false;
+		for (int i = 0; i < figure.size() && removed == false; i++) {
+
+			for (int j = 0; j < figure.size() && removed == false; j++) {
+				if (!(figure.get(i) instanceof Triangle)&& !(figure.get(j) instanceof Triangle)) {
+					if (i != j) {
+						if (PApplet.dist(figure.get(i).getPosX(), figure.get(i).getPosY(),
+										figure.get(j).getPosX(), figure.get(j).getPosY()) 
+											<= figure.get(i).getTam() / 2 + figure.get(j).getTam() / 2) {
+							
+											addTriangulo(figure.get(i).getPosX(), //posx to draw triangle
+														 figure.get(i).getPosY());//posY to draw triangle
+											
+											figure.remove(j);//REMUEVE First figure
+											figure.remove(i);// REMUEVE second figure
+											
+											removed = true;
+						}
+					}
+
+				}
+
+			}
+		}
+	}
+
+	private void addTriangulo(int posX, int posY) {
+		int tam = (int) random(10,80);
+		int direction = 1;
+
+		int r= (int) random (0,255);
+		int g= (int) random (0,255);
+		int b= (int) random (0,255);
+		
+		figure.add(new Triangle(tam, posX, posY, direction, r, g, b, app));
+	}
+	
 }

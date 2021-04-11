@@ -32,4 +32,8 @@ public class Controller {
 	public void pauseFig() {
 		logic.pauseFig();
 	}
+	
+	public void hit() {
+		logic.hit();
+	}
 }

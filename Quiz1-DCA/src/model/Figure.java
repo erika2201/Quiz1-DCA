@@ -49,7 +49,6 @@ public abstract class Figure extends PApplet {
 		this.isMov = isMov;
 	}
 	
-	
 	public int getPosX() {
 		return posX;
 	}
