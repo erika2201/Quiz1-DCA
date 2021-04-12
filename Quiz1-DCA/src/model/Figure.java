@@ -37,29 +37,29 @@ public abstract class Figure extends PApplet {
 	
 	protected void move() {
 		if (isMov) {
-			if (posY - tam/2 <= 1 || posY + (tam/2) >= 599) {
-				posY += direction; 
+			if(posY - (tam/2) >= 0 && posY + (tam/2) <= 599) {
+				posY += (direction);
 				
-				if(posY - (tam/2) == 1 || posY + tam/2 == 599) {
-					direction = direction * (-1);
+				if (posY - (tam/2) == 0 || posY + (tam/2) == 599) {			
+					direction = direction *(-1);
 				}
 			}
-			else if (posY - (tam/2)< 1) {
+			else if(posY - (tam/2) < 0) {
 				if(direction == 1) {
-					posY += direction;
+					posY += (direction);
 				}
-				else if (direction == -1) {
-					direction = direction * (-1);
-					posY += direction;
+				else if(direction == -1) {
+					direction = direction *(-1);
+					posY += (direction);
 				}
 			}
-			else if (posY + (tam/2)>599) {
+			else if(posY + (tam/2) > 599) {
 				if(direction == 1) {
-					posY += direction;
+					direction = direction *(-1);
+					posY += (direction);
 				}
-				else if (direction == -1) {
-					direction = direction * (-1);
-					posY += direction;
+				else if(direction == -1) {
+					posY += (direction);
 				}
 			}
 		}
